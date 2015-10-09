@@ -17,7 +17,7 @@ has password     => (is => 'rw', required => 1);
 has tenant_name  => (is => 'rw');
 has storage_url  => (is => 'rw');
 has token        => (is => 'rw');
-has timeout      => (is => 'rw', default => sub {10});
+has timeout      => (is => 'rw',  required => 1), default => sub {10});
 has agent => (
     is      => 'rw',
     lazy    => 1,
@@ -519,6 +519,7 @@ Net::OpenStack::Swift - Perl Bindings for the OpenStack Object Storage API, know
         password       => 'password',
         tenant_name    => 'project_id',
         # auth_version => '2.0', # by default
+        # timeout      => 10, # by default
     );
 
     my ($storage_url, $token) = $sw->get_auth();
@@ -537,6 +538,7 @@ Net::OpenStack::Swift - Perl Bindings for the OpenStack Object Storage API, know
         # or private, if you are under the private network.
         auth_version  => '1.0',
         tenant_name   => 'public',
+        # timeout      => 10, # by default
     );
 
 =head1 DESCRIPTION
