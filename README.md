@@ -65,6 +65,11 @@ Creates a client.
 
     Optional.
     default 2.0
+- timeout
+    
+    in seconds.
+    Optional.
+    default 10
 
 ## get\_auth
 
