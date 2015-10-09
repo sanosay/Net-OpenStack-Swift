@@ -17,13 +17,15 @@ has password     => (is => 'rw', required => 1);
 has tenant_name  => (is => 'rw');
 has storage_url  => (is => 'rw');
 has token        => (is => 'rw');
+has timeout      => (is => 'rw', default => sub {10});
 has agent => (
     is      => 'rw',
     lazy    => 1,
-    default => sub {
+    default => sub {c
         my $self = shift;
         my $agent = Furl->new(
             #agent    => "Mozilla/5.0",
+            timeout => $self->timeout
         );
         return $agent;
     },
